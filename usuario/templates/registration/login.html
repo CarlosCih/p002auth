@@ -30,7 +30,14 @@
                             <button type="submit" class="btn btn-primary">Login</button>
                         </div>
                     </form>
-                    <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url 'register' %}">¿No tienes una cuenta? Regístrate aquí.</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

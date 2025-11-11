@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+{% block title %}Crear nuevo usuario{% endblock %}
+{% block content %}
+<h1>Registro de nuevo usuario</h1>
+<p>
+    Aquí puedes crear un nuevo usuario. Completa el formulario de registro y envialo para crear la cuenta
+</p>
+<form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+{% endblock %}

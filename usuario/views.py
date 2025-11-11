@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm
+from .forms import LoginForm, UserRegistrationForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -32,3 +32,20 @@ def user_login(request):
 def dashboard(request):
     return render(request, 'account/dashboard.html', {'section': 'dashboard'})
 
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            #Se cre un nuevo objeto de usuario sin guardarlo aun en la base de datos
+            new_user = user_form.save(commit=False)
+            #Se encripta la contraseña proporcionada por el usuario
+            new_user.set_password(user_form.cleaned_data['password'])
+            #Se guarda el usuario en la base de datos
+            new_user.save()
+            #Se renderiza la plantilla html del registro exitoso
+            return render(request, 'account/register_done.html')
+    else:
+            #Si el formulario no es valido, se vuelve a mostrar el formulario con los errores
+            user_form = UserRegistrationForm()
+        #Se renderiza la plantilla html del formulario de registro
+    return render(request, 'account/register.html', {'user_form': user_form})

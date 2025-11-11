@@ -1,0 +1,8 @@
+{% extends "master.html" %}
+{% block title %}Registro exitoso{% endblock %}
+{% block content %}
+<h1>Bienvenido {{ new_user.username }}</h1>
+<p>
+    Tu cuenta ha sido creada exitosamente. Ahora puedes <a href="{% url 'login' %}">iniciar sesión</a>.
+</p>
+{% endblock %}

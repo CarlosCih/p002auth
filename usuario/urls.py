@@ -17,6 +17,9 @@ urlpatterns = [
     path('reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     #ruta para el registro de nuevos usuarios
     path('register/', views.register, name='register'),
+    #ruta para la edicion de perfil de usuario
+    path('edit/', views.edit, name='edit'),
+    #ruta para el dashboard de usuario
     path('', views.dashboard, name='dashboard')
 
 ]

@@ -43,7 +43,7 @@ def register(request):
             #Se guarda el usuario en la base de datos
             new_user.save()
             #Se renderiza la plantilla html del registro exitoso
-            return render(request, 'account/register_done.html')
+            return render(request, 'account/register_done.html', {'new_user': new_user})
     else:
             #Si el formulario no es valido, se vuelve a mostrar el formulario con los errores
             user_form = UserRegistrationForm()
